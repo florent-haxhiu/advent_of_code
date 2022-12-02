@@ -44,4 +44,15 @@ def get_the_highest_number():
 
 
 def get_three_highest_numbers():
-    pass
+
+    arr = add_int_together()
+
+    three_biggest_numbers = []
+
+    arr.sort()
+    arr.reverse()
+
+    return arr[0] + arr[1] + arr[2]
+
+
+print(get_three_highest_numbers())
