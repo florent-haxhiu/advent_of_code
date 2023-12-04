@@ -1,5 +1,3 @@
-import re 
-
 def read_file(file_name: str):
     with open(file_name, 'r') as f:
         file_data = [line.strip() for line in f.readlines()]
@@ -14,14 +12,14 @@ def find_calibration(file_data: list):
         nums = []
         for i,c in enumerate(data):
             if c.isdigit():
-                nums.append(c)
+                nums.append(str(c))
             for d,val in enumerate(nums_in_word):
                 if data[i:].startswith(val):
                     nums.append(str(d+1))
         if len(nums) == 1:
-            total += int(str(nums[0]) + str(nums[0]))
+            total += int(nums[0] + nums[0])
         else:
-            total += int(str(nums[0]) + str(nums[-1]))
+            total += int(nums[0] + nums[-1])
     return total
 
 print(find_calibration(file_data))
