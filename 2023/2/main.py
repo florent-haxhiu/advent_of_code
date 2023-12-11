@@ -2,12 +2,15 @@ MAX_RED = 12
 MAX_GREEN = 13
 MAX_BLUE = 14
 
+
 def read_file(file_name: str):
     with open(file_name, 'r') as f:
         data = [line.strip() for line in f.readlines()]
     return data
 
+
 file_data = read_file('part_one.txt')
+
 
 def find_sum_of_game_ids(data: list):
     game_ids = []
@@ -35,14 +38,15 @@ def find_sum_of_game_ids(data: list):
             game_ids.append(int(game_id))
     return sum(game_ids)
 
+
 def find_the_min_number_of_cubes_per_color(data: list):
     total = 0
     for line in data:
         split_lines = "".join(line.split(':', maxsplit=1)[1]).strip().split(' ')
 
-        min_green = find_first_color(split_lines, 'green')
-        min_red = find_first_color(split_lines, 'red')
-        min_blue = find_first_color(split_lines, 'blue')
+        min_green = find_first_color_amount(split_lines, 'green')
+        min_red = find_first_color_amount(split_lines, 'red')
+        min_blue = find_first_color_amount(split_lines, 'blue')
 
         for i in range(len(split_lines)-1):
             if split_lines[i].isdigit() and split_lines[i+1].startswith('blue'):
@@ -56,9 +60,11 @@ def find_the_min_number_of_cubes_per_color(data: list):
 
     return total
 
-def find_first_color(line, color):
+
+def find_first_color_amount(line, color):
     for i in range(len(line)-1):
         if line[i].isdigit() and line[i+1].startswith(color):
             return int(line[i])
+
 
 print(find_the_min_number_of_cubes_per_color(file_data))

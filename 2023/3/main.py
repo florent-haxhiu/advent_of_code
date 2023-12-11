@@ -1,4 +1,3 @@
-import sys
 import math
 
 
@@ -22,10 +21,10 @@ def neighbors(x, y):
                 continue
             if i == 0 and j == 0:
                 continue
-            yield (file_data[a][b], a, b)
+            yield file_data[a][b], a, b
 
 
-def findStar(stars, i, j):
+def find_star(stars, i, j):
     for n, i2, j2 in neighbors(i, j):
         if n == '*':
             stars.add((i2, j2))
@@ -45,7 +44,7 @@ for i, l in enumerate(file_data):
         if num:
             if c.isnumeric():
                 current = current * 10 + int(c)
-                stars = findStar(stars, i, j)
+                stars = find_star(stars, i, j)
             else:
                 for x, y in stars:
                     if x not in result:
@@ -59,12 +58,12 @@ for i, l in enumerate(file_data):
             if c.isnumeric():
                 num = True
                 current = int(c)
-                stars = findStar(stars, i, j)
-finalResult = 0
+                stars = find_star(stars, i, j)
+final_result = 0
 for i in result:
     for j in result[i]:
         v = result[i][j]
         size = len(v)
         if size == 2:
-            finalResult = finalResult + math.prod(v)
-print(finalResult)
+            final_result = final_result + math.prod(v)
+print(final_result)
