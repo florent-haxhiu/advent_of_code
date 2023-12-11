@@ -21,7 +21,6 @@ def find_total_points(file_name: str) -> int:
         guessed_numbers: set = convert_list_into_readable_format(numbers[0])
 
         len_of_guessed = len(guessed_numbers)
-        len_of_winning = len(winning_numbers)
 
         diff = guessed_numbers.difference(winning_numbers)
         print(diff)
@@ -40,5 +39,5 @@ def find_total_points(file_name: str) -> int:
 
     return total
 
-print(find_total_points('part_one.txt'))
 
+print(find_total_points('part_one.txt'))
