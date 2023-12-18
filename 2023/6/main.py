@@ -1,5 +1,3 @@
-import re
-
 file = open('input.txt', 'r').readlines()
 
 time = int(file[0].split(':')[1].replace(' ', ''))
